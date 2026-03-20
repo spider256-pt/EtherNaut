@@ -1,0 +1,19 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# 1. THE AUTO-PILOT
+# This allows Foundry to switch between Solidity 0.6.0 (for Fallout) 
+# and 0.8.0 (for Tests) automatically.
+auto_detect_solc = true
+
+# 2. THE SHORTCUTS (Remappings)
+# This tells Foundry where to look when it sees "openzeppelin-contracts-06"
+remappings = [
+    "@openzeppelin=lib/ethernaut/contracts/"
+]
+
+# 3. PERMISSIONS
+# Allows your scripts to read/write files (needed for advanced logging)
+fs_permissions = [{ access = "read", path = "./"}]
