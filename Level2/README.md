@@ -1,66 +1,62 @@
-## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+☢️ Ethernaut Level 2: Fallout
+Author: Pratik
+Role: Smart Contract Engineer & Security Auditor
+Framework: Foundry (Solidity ^0.8.18)
 
-Foundry consists of:
+📝 Objective
+The goal of this level is to claim ownership of the Fallout contract and drain its balance.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+This contract is a historical recreation of the infamous 2016 "Rubixi" hack, demonstrating the catastrophic dangers of constructor misconfigurations in early Solidity versions.
 
-## Documentation
+🔍 The Vulnerability
+Prior to Solidity 0.4.22, constructors were defined by creating a function with the exact same name as the contract.
 
-https://book.getfoundry.sh/
+In Fallout.sol, the developer made a fatal typographical error:
 
-## Usage
+Contract Name: Fallout
 
-### Build
+Constructor Name: Fal1out (Spelled with a '1')
 
-```shell
-$ forge build
-```
+Solidity
+/* Constructor */
+function Fal1out() public payable {
+    owner = msg.sender;
+    allocations[owner] = msg.value;
+}
+Because the EVM compiler did not recognize Fal1out as the constructor, it treated it as a standard, public function. This left the primary access-control mechanism completely exposed, allowing any external actor to call the function and overwrite the owner state variable.
 
-### Test
+🛠️ The Foundry Engineering (Bypassing Pragma Clashes)
+The target contract was written in ^0.6.0. Standard Foundry testing libraries (forge-std) require ^0.8.13. Simply importing the legacy contract into a modern test file causes a fatal compiler version clash.
 
-```shell
-$ forge test
-```
+To solve this and maintain a modern 0.8.18 testing environment, I utilized the Interface & Proxy Deployment Pattern:
 
-### Format
+Quarantined the 0.6.0 legacy code in the src folder.
 
-```shell
-$ forge fmt
-```
+Created an IFallOut interface in the test file to define the required function signatures.
 
-### Gas Snapshots
+Used Foundry's deployCode("FallOut.sol:Fallout_Sol") cheatcode to compile and deploy the legacy bytecode in the background.
 
-```shell
-$ forge snapshot
-```
+Wrapped the deployed address in the modern interface.
 
-### Anvil
+🧪 Audit & Exploit Execution
+My test suite (TestFallout.t.sol) implements a strict Arrange-Act-Assert methodology to map the floorplan and execute the exploit:
 
-```shell
-$ anvil
-```
+Functional Testing (testCollectAllocation): Proved that the onlyOwner access control modifier successfully blocks unauthorized access (using vm.expectRevert()) and allows the true owner to drain the vault.
 
-### Deploy
+State Vulnerability (testsendAllocation): Discovered a secondary accounting flaw. The contract sends allocated ETH back to the user but fails to decrement their internal balance, creating an infinite withdrawal loop.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+The Kill Shot (testFal1out): 1. Pranked as the attacker.
+2. Called the exposed Fal1out{value: 1 wei}() function.
+3. Successfully asserted that the attacker hijacked the owner title.
+4. Called collectAllocations() to sweep the vault.
 
-### Cast
+🚀 How to Run Locally
+Clone the repository.
 
-```shell
-$ cast <subcommand>
-```
+Install dependencies: forge install
 
-### Help
+Execute the exploit test:
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Bash
+forge test --mt testFal1out -vvvv
