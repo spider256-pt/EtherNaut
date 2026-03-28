@@ -9,4 +9,4 @@ The smart contract contains a fatal flaw in its authorization logic within the `
 ```solidity
 if (tx.origin != msg.sender) {
     owner = _owner;
-}```
+}
