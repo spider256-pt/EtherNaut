@@ -2,7 +2,6 @@
 
 import {Fallback_sol} from "../../src/Fallback.sol";
 import {DeployFallback} from "../../script/FallBackDeploy/DeployFallback.s.sol";
-import "@openzeppelin/src/levels/Fallback.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 pragma solidity ^0.8.0;
