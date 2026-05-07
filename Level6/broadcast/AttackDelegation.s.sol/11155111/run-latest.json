@@ -1,0 +1,52 @@
+{
+  "transactions": [
+    {
+      "hash": "0xe3a8732f6ddf1887943da091ba6df53b4d3f405a6a468248b29ee4b7f5632af0",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0xf4ef8ef78e895704c9d300c1208449a21282ed64",
+      "function": "pwn()",
+      "arguments": [],
+      "transaction": {
+        "from": "0x5f265547093b1c70011b5036c77a5378a7d9c8ea",
+        "to": "0xf4ef8ef78e895704c9d300c1208449a21282ed64",
+        "gas": "0xa85c",
+        "value": "0x0",
+        "input": "0xdd365b8b",
+        "nonce": "0x55",
+        "chainId": "0xaa36a7"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "status": "0x1",
+      "cumulativeGasUsed": "0xef2157",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "transactionHash": "0xe3a8732f6ddf1887943da091ba6df53b4d3f405a6a468248b29ee4b7f5632af0",
+      "transactionIndex": "0x54",
+      "blockHash": "0xb1496069a063e446ed0e499e2de649619a0f2436f941d8d09918ee31800f8256",
+      "blockNumber": "0xa4e4f6",
+      "gasUsed": "0x79e4",
+      "effectiveGasPrice": "0x173164",
+      "from": "0x5f265547093b1c70011b5036c77a5378a7d9c8ea",
+      "to": "0xf4ef8ef78e895704c9d300c1208449a21282ed64",
+      "contractAddress": null
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "returns": {
+    "0": {
+      "internal_type": "contract Delegation",
+      "value": "0xF4Ef8eF78E895704c9D300C1208449A21282ed64"
+    }
+  },
+  "timestamp": 1778140477208,
+  "chain": 11155111,
+  "commit": null
+}
