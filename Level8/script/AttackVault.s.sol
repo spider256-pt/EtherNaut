@@ -20,4 +20,3 @@ contract AttackVault is Script{
         vm.stopBroadcast();
         
     }
-}
