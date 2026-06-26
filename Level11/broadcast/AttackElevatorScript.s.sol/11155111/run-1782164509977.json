@@ -1,0 +1,49 @@
+{
+  "transactions": [
+    {
+      "hash": "0xa1c60552bdec2400395542d6ef0e408810f7da97f6428d72b997f6ef3a95aef7",
+      "transactionType": "CALL",
+      "contractName": "AttackElevator",
+      "contractAddress": "0xc7f2cf4845c6db0e1a1e91ed41bcd0fcc1b0e141",
+      "function": "attack(uint256)",
+      "arguments": [
+        "12"
+      ],
+      "transaction": {
+        "from": "0x5f265547093b1c70011b5036c77a5378a7d9c8ea",
+        "to": "0xc7f2cf4845c6db0e1a1e91ed41bcd0fcc1b0e141",
+        "gas": "0x740e",
+        "value": "0x0",
+        "input": "0x64dd891a000000000000000000000000000000000000000000000000000000000000000c",
+        "nonce": "0x8f",
+        "chainId": "0xaa36a7"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "status": "0x1",
+      "cumulativeGasUsed": "0x131aba3",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "transactionHash": "0xa1c60552bdec2400395542d6ef0e408810f7da97f6428d72b997f6ef3a95aef7",
+      "transactionIndex": "0xbf",
+      "blockHash": "0x379c59d21bc7cc1d1cd0c59bc144b9092807ce8354496ac06b36d6f61d745d8c",
+      "blockNumber": "0xa9a7b9",
+      "gasUsed": "0x5406",
+      "effectiveGasPrice": "0x3f74d11e",
+      "from": "0x5f265547093b1c70011b5036c77a5378a7d9c8ea",
+      "to": "0xc7f2cf4845c6db0e1a1e91ed41bcd0fcc1b0e141",
+      "contractAddress": null
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "returns": {},
+  "timestamp": 1782164509977,
+  "chain": 11155111,
+  "commit": null
+}
