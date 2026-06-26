@@ -1,7 +1,6 @@
-**/.env
-**/cache/
-**/out/
-**/broadcast/
-**/lib/
 .DS_Store
 **/.DS_Store
+**/lib/
+**/out/
+**/cache/
+**/broadcast/
